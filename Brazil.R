@@ -5,14 +5,14 @@ tuesdata <- tidytuesdayR::tt_load(2021, week = 15)
 
 d <- tuesdata$brazil_loss %>% select(-2)
 
-dwide<-d %>% pivot_longer(!c(entity,year),names_to='cause',values_to='value') %>% 
+dl<-d %>% pivot_longer(!c(entity,year),names_to='cause',values_to='value') %>% 
   group_by(year) %>% 
   mutate(pct=round(value/sum(value),4)*100) 
 
 mypal<-c('rosybrown','darkred','lightblue','goldenrod','darkgreen','gray70',
          'darkseagreen4','gray20','saddlebrown','dodgerblue4','palegreen3')
 
-dwide %>% 
+dl %>% 
   mutate(cause=gsub('[[:punct:] ]+',' ',cause)) %>% 
 ggplot(aes(x=2,y=pct,fill=cause))+
   geom_bar(stat='identity',color='black',size=0.04)+
