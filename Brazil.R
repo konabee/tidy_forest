@@ -1,5 +1,7 @@
 ## Tidy Tuesday April 6th 2021 ## 
+install.packages('tidytuesdayR')
 library(tidyverse)
+library(tidytuesdayR) 
 
 tuesdata <- tidytuesdayR::tt_load(2021, week = 15)
 
